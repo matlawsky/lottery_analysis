@@ -26,7 +26,7 @@ def parse_using_regex(line: str) -> str:
     result = "No match"
 
     if finding:
-        result = ",".join(map(str, [finding.group(i) for i in range(1, 12)]))
+        result = [finding.group(i) for i in range(1, 12)]
 
     return result
 
@@ -37,7 +37,7 @@ def save_to_csv(
     with open("unclear_data.csv", "w", newline="") as file:
         writer = csv.writer(file)
         for i in lst:
-            writer.writerow([i])
+            writer.writerow(i)
 
 
 def parse_draw_data(lst: list):
@@ -63,9 +63,19 @@ def main():
         rows_list.append(parse_using_regex(data_dict[str(i)]))
 
     # add description to csv by inserting it on the firt position
-    description = (
-        "day_of_the_week,day,month,year,draw_id_number,nr1,nr2,nr3,nr4,nr5,nr6"
-    )
+    description = [
+        "day_of_the_week",
+        "day",
+        "month",
+        "year",
+        "draw_id_number",
+        "nr1",
+        "nr2",
+        "nr3",
+        "nr4",
+        "nr5",
+        "nr6",
+    ]
     rows_list.insert(0, description)
     save_to_csv(rows_list)
 
