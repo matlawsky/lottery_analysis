@@ -55,7 +55,7 @@ def main():
 
     data_dict = {}
     rows_list = []
-    with open(f"lotto_data.json", "r", encoding="utf-8") as d:
+    with open(f"new_lotto_data_api.json", "r", encoding="utf-8") as d:
         data_dict = json.load(d)
     i = 0
     for row in data_dict:
